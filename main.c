@@ -9,7 +9,8 @@ static struct client theApp;
 
 int main(int argc, char* argv[])
 {
-	if (sp_list_ports(&theApp.port_list) == SP_OK) {
+	enum sp_return ret = sp_list_ports(&theApp.port_list);
+	if (ret == SP_OK) {
 		int i = 0;
 		struct sp_port* port;
 		do {
@@ -24,7 +25,7 @@ int main(int argc, char* argv[])
 		} while (port);
 		sp_free_port_list(theApp.port_list);
 	} else {
-		printf("sp_list_ports() error\n");
+		printf("sp_list_ports(): %d\n", ret);
 	}
 	return 0;
 }
