@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 		}
 		sp_free_port_list(theApp.port_list);
 	} else {
-		printf("sp_list_ports(): %d\n", sp_ret);
+		fprintf(stderr, "sp_list_ports(): %d\n", sp_ret);
 		ret = -1;
 	}
 	return ret;
